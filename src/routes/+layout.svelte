@@ -24,7 +24,8 @@
 
 				console.log('user', user);
 				const currentUrl = $page.url;
-				if (currentUrl.toString() === '/auth') {
+				console.log('currentUrl', currentUrl);
+				if (currentUrl.pathname === '/auth') {
 					goto('/main');
 					return;
 				}
