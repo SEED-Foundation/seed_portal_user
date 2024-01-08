@@ -14,6 +14,7 @@
 	{#if $announcementState.loading}
 		<Loading />
 	{:else if $announcementState.error}
+		<div>{$announcementState.error.message}</div>
 		<Error />
 	{:else if $announcementState.announcements && $announcementState.duration}
 		<AnnouncementCarousel
