@@ -5,7 +5,7 @@ const appwriteEndpoint = PUBLIC_ENDPOINT;
 const appwriteProjectId = PUBLIC_PROJECT_ID;
 const authSuccessRedirect = 'https://seedkurdistan.ngo';
 const authFailureRedirect = 'https://seedkurdistan.ngo';
-const authRedirect = 'https://portal.seedkurdistan.ngo/success';
+const authRedirect = 'https://portal.seedkurdistan.ngo/success/';
 const appwriteDatabaseID = '6534d12491751e1f3c6b';
 
 const appwriteCollectionAnnouncements = '6534d12f68a1b7c2ae77';

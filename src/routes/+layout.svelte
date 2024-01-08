@@ -10,9 +10,19 @@
 	onMount(async () => {
 		updateState.listentToUpdate();
 		try {
+			console.log('authStore', authStore);
 			const user = await appwriteAccount.get();
+			console.log('user', user);
 			if (user) {
 				// navigate to the intended page
+
+				// if there is route error
+				if ($page.error) {
+					goto('/main');
+					return;
+				}
+
+				console.log('user', user);
 				const currentUrl = $page.url;
 				if (currentUrl.toString() === '/auth') {
 					goto('/main');
@@ -24,6 +34,7 @@
 				goto('/auth');
 			}
 		} catch (error) {
+			console.log('error', error);
 			goto('/auth');
 		}
 	});
