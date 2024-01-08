@@ -30,26 +30,38 @@ interface AnnouncementStore extends AnnouncementState {
 }
 
 const createState = (): AnnouncementStore => {
-	const initState: AnnouncementState = { loading: true };
+	const initState: AnnouncementState = { loading: false };
 	const { subscribe, set } = writable<AnnouncementState>(initState);
 
 	const getAnnouncements = async () => {
 		const prevAnnouncements = get(announcementState);
 		set({ ...prevAnnouncements, loading: true });
-		const announcementsDoc = await appwriteDatabase.listDocuments(
-			appwriteDatabaseID,
-			appwriteCollectionAnnouncements,
-			[Query.equal('active', true)]
-		);
+		let announcementsDoc;
+		let durationModel;
+		try {
+			announcementsDoc = await appwriteDatabase.listDocuments(
+				appwriteDatabaseID,
+				appwriteCollectionAnnouncements,
+				[Query.equal('active', true)]
+			);
+		} catch (e: any) {
+			console.log(e);
+			set({ ...prevAnnouncements, loading: false, error: { message: e } });
+		}
 
-		const durationModel = await appwriteDatabase.getDocument(
-			appwriteDatabaseID,
-			appwriteCollectionSettings,
-			'6562f4ee7323099bcd4e'
-		);
+		try {
+			durationModel = await appwriteDatabase.getDocument(
+				appwriteDatabaseID,
+				appwriteCollectionSettings,
+				'6562f4ee7323099bcd4e'
+			);
+		} catch (e: any) {
+			console.log(e);
+			set({ ...prevAnnouncements, loading: false, error: { message: e } });
+		}
 
-		const duration = durationModel.duration;
-		const announcements = announcementsDoc.documents.map(
+		const duration = durationModel!.duration;
+		const announcements = announcementsDoc!.documents.map(
 			(doc: Models.Document) => new AnnouncementModel(doc)
 		);
 		const announcementsData = { announcements, duration, loading: false };
