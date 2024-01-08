@@ -17,7 +17,7 @@
 	.google-icon {
 		width: 20px;
 		height: 20px;
-		background-image: url($lib/icons/google.svg);
+		background-image: url(/icons/google.svg);
 		background-size: contain;
 		background-repeat: no-repeat;
 	}
