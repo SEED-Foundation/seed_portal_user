@@ -46,7 +46,7 @@ const createState = (): AnnouncementStore => {
 			);
 		} catch (e: any) {
 			console.log(e);
-			set({ ...prevAnnouncements, loading: false, error: { message: e } });
+			set({ ...prevAnnouncements, loading: false, error: { message: e + ' appwriteCollectionAnnouncements'} });
 		}
 
 		try {
@@ -57,7 +57,7 @@ const createState = (): AnnouncementStore => {
 			);
 		} catch (e: any) {
 			console.log(e);
-			set({ ...prevAnnouncements, loading: false, error: { message: e } });
+			set({ ...prevAnnouncements, loading: false, error: { message: e  + ' appwriteCollectionSettings'} });
 		}
 
 		const duration = durationModel!.duration;
