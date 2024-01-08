@@ -55,6 +55,8 @@ const createState = (): AnnouncementStore => {
 				appwriteCollectionSettings,
 				'6562f4ee7323099bcd4e'
 			);
+      console.log(durationModel);
+      console.log('########@@@@@@@@@@@@')
 		} catch (e: any) {
 			console.log(e);
 			set({ ...prevAnnouncements, loading: false, error: { message: e  + ' appwriteCollectionSettings'} });
