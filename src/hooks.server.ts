@@ -10,7 +10,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		// check if the default url
 		// if so, redirect to the default url
 		if (pathname === '/') {
-			return redirect(303, '/main');
+			return redirect(303, '/auth');
 		} else {
 			// if not, check if the request is a data request
 			// if so, redirect to the default url

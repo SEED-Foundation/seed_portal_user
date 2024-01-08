@@ -14,6 +14,10 @@
 			if (user) {
 				// navigate to the intended page
 				const currentUrl = $page.url;
+				if (currentUrl.toString() === '/auth') {
+					goto('/main');
+					return;
+				}
 				goto(currentUrl);
 				return;
 			} else {
