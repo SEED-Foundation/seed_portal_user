@@ -17,7 +17,7 @@
 
 	onMount(() => {
 		swipeConfig = {
-			autoplay: false,
+			autoplay: true,
 			delay: 4000,
 			showIndicators: false,
 			transitionDuration: 500,
