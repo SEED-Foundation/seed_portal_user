@@ -49,20 +49,20 @@ const createState = (): AnnouncementStore => {
 			set({ ...prevAnnouncements, loading: false, error: { message: e + ' appwriteCollectionAnnouncements'} });
 		}
 
-		try {
-			durationModel = await appwriteDatabase.getDocument(
-				appwriteDatabaseID,
-				appwriteCollectionSettings,
-				'6562f4ee7323099bcd4e'
-			);
-      console.log(durationModel);
-      console.log('########@@@@@@@@@@@@')
-		} catch (e: any) {
-			console.log(e);
-			set({ ...prevAnnouncements, loading: false, error: { message: e  + ' appwriteCollectionSettings'} });
-		}
+	// 	try {
+	// 		durationModel = await appwriteDatabase.getDocument(
+	// 			appwriteDatabaseID,
+	// 			appwriteCollectionSettings,
+	// 			'6562f4ee7323099bcd4e'
+	// 		);
+    //   console.log(durationModel);
+    //   console.log('########@@@@@@@@@@@@')
+	// 	} catch (e: any) {
+	// 		console.log(e);
+	// 		set({ ...prevAnnouncements, loading: false, error: { message: e  + ' appwriteCollectionSettings'} });
+	// 	}
 
-		const duration = durationModel!.duration;
+		const duration = 5;
 		const announcements = announcementsDoc!.documents.map(
 			(doc: Models.Document) => new AnnouncementModel(doc)
 		);
