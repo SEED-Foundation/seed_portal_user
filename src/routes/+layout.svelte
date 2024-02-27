@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import '../app.postcss';
+	import '../app.css';
 	import { appwriteAccount } from '$lib/appwrite-config';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -10,7 +11,6 @@
 	onMount(async () => {
 		updateState.listentToUpdate();
 		try {
-			console.log('authStore', authStore);
 			const user = await appwriteAccount.get();
 			console.log('user', user);
 			if (user) {
@@ -22,11 +22,9 @@
 					return;
 				}
 
-				console.log('user', user);
 				const currentUrl = $page.url;
-				console.log('currentUrl', currentUrl);
 				if (currentUrl.pathname === '/auth') {
-					goto('/main');
+					goto('/main/announcements');
 					return;
 				}
 				goto(currentUrl);
@@ -35,7 +33,6 @@
 				goto('/auth');
 			}
 		} catch (error) {
-			console.log('error', error);
 			goto('/auth');
 		}
 	});

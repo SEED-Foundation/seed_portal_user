@@ -1,9 +1,68 @@
+@import '@fontsource/manrope';
+@import '@fontsource/jetbrains-mono';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
-html, body { @apply h-full overflow-hidden; }
 
-.swipeable-item-inner{
-    width:100%;
+html,
+body {
+	@apply h-full overflow-hidden;
+
+	background: linear-gradient(-45deg, #004d00, #007f00, #0a0f3d, #000000);
+	background-size: 200% 200%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+	color:white
+}
+
+body dark {
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+	color:white
+}
+
+.swipeable-item-inner {
+	width: 100%;
+}
+:root {
+	--r-main-font: 'Manrope';
+	--r-heading-font: 'Manrope';
+	--r-code-font: 'JetBrains Mono';
+	--r-link-color: aqua;
+	--r-link-color-hover: aqua;
+	--glass-blur: blur(20px);
+	--glass-background: rgba(255, 255, 255, 0.194);
+	--glass-border-color: rgba(255, 255, 255, 0.238);
+}
+
+hljs {
+	background: none;
+}
+
+.hljs-title,
+.hljs-keyword {
+	font-weight: normal;
+}
+
+.reveal pre,
+.reveal code {
+	overflow: hidden !important;
+}
+
+.reveal pre {
+	box-shadow: none;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

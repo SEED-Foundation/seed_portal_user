@@ -12,8 +12,8 @@ import { Query, type Models } from 'appwrite';
 import { AnnouncementModel } from '../lib/model/announcement-model';
 
 interface AnnouncementState {
-	announcements?: AnnouncementModel[];
-	
+	announcementsTV?: AnnouncementModel[];
+
 	duration?: number;
 	error?: {
 		message: string;
@@ -40,7 +40,6 @@ const createState = (): AnnouncementStore => {
 		const prevAnnouncements = get(announcementState);
 		set({ ...prevAnnouncements, loading: true });
 		let announcementsDoc;
-		let durationModel;
 		try {
 			announcementsDoc = await appwriteDatabase.listDocuments(
 				appwriteDatabaseID,
@@ -50,7 +49,6 @@ const createState = (): AnnouncementStore => {
 					Query.equal('approve', true),
 					Query.equal('isTV', true),
 					Query.orderDesc('$createdAt')
-
 				]
 			);
 		} catch (e: any) {
@@ -75,14 +73,14 @@ const createState = (): AnnouncementStore => {
 		// 	}
 
 		const duration = 5;
-		const announcements = announcementsDoc!.documents.map((doc: Models.Document) => {
+		const announcementsTV = announcementsDoc!.documents.map((doc: Models.Document) => {
 			if (doc.image_id) {
 				const image = appwriteStorage.getFilePreview(appwriteBucketIdAnnouncement, doc.image_id);
 				doc.image_url = image.href;
 			}
 			return new AnnouncementModel(doc);
 		});
-		const announcementsData = { announcements, duration, loading: false };
+		const announcementsData = { announcementsTV, duration, loading: false };
 		set(announcementsData);
 	};
 

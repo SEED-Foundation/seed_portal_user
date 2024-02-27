@@ -1,6 +1,6 @@
 import { writable, type Subscriber, type Unsubscriber } from 'svelte/store';
 import { appwriteAccount, authRedirect } from '$lib/appwrite-config';
-import type { UserModel } from '../model/user-model';
+import type { UserModel } from '../lib/model/user-model';
 
 interface AuthState {
 	user?: UserModel;

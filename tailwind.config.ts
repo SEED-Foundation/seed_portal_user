@@ -14,7 +14,8 @@ export default {
 		extend: {
 			width: {
 				'4/6': '66.666667%',
-				'2/6': '33.333333%'
+				'2/6': '33.333333%',
+				'120': '30rem'
 			},
 			minWidth: {
 				'4/6': '66.666667%',
@@ -33,6 +34,11 @@ export default {
 				'5/6': '83.333333vh',
 				'2/6': '33.333333%'
 			}
+		},
+		colors: {
+			primary: "#61b164",
+			black: "#000000",
+			transparent: "transparent",
 		}
 	},
 	plugins: [

@@ -5,7 +5,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const { url, request } = event;
 	const { pathname, origin } = url;
 	
-
 	if (routeRegex.test(pathname)) {
 		// check if the default url
 		// if so, redirect to the default url

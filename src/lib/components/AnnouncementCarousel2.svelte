@@ -1,12 +1,18 @@
-<script lang="ts">
+<!-- <script lang="ts">
+	import Reveal from 'reveal.js';
+	import Markdown from 'reveal.js/plugin/markdown/markdown';
+	import Highlight from 'reveal.js/plugin/highlight/highlight';
+	import Note from 'reveal.js/plugin/notes/notes';
+	import 'reveal.js/dist/reveal.css';
+	import 'reveal.js/dist/theme/white.css';
+	import 'reveal.js/dist/theme/black.css';
+	import 'reveal.js/plugin/highlight/monokai.css';
 	import { onMount } from 'svelte';
 	import { Swipe, SwipeItem } from 'svelte-swipe';
 	import type { AnnouncementModel } from '../model/announcement-model';
 	import { CarouselSetting } from '../model/carousel_setting';
 	import { fade, fly } from 'svelte/transition';
-
-	let swipeConfig: any;
-
+	import Slides from '$lib/deck/slides.svelte';
 	let section;
 
 	let imgCon;
@@ -14,24 +20,21 @@
 	export let announcements: AnnouncementModel[];
 	export let duration: number;
 	export let carouselSetting: CarouselSetting;
-	let carousel; // for calling methods of the carousel instance
-	let imageWidth;
-	let imageHeight;
 
 	onMount(() => {
-		swipeConfig = {
-			autoplay: true,
-			delay: 4000,
-			showIndicators: false,
-			transitionDuration: 500,
-			defaultIndex: 0
-		};
-		swipeConfig.delay = duration ? duration * 1000 : 4000;
-		// const height = section.clientHeight;
-
-		setTimeout(() => {
-			animate = true;
-		}, 100);
+		const deck = new Reveal({
+			autoAnimateEasing: 'ease',
+			autoAnimateDuration: 1,
+			hash: true,
+			controls: true,
+			progress: true
+		});
+		deck.initialize({
+			plugins: [Markdown, Highlight, Note],
+			markdown: {
+				smartypants: true
+			}
+		});
 	});
 
 	let animate = false;
@@ -159,4 +162,4 @@
 		margin: auto;
 		z-index: 100;
 	}
-</style>
+</style> -->

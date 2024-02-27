@@ -4,7 +4,7 @@ import {
 	appwriteDatabaseID
 } from '$lib/appwrite-config';
 import { writable, type Subscriber, type Unsubscriber, get } from 'svelte/store';
-import type { SettingModel } from '../model/setting-model';
+import type { SettingModel } from '../lib/model/setting-model';
 
 interface UpdsateState {
 	loading: boolean;
