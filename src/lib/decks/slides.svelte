@@ -44,8 +44,8 @@
 	});
 </script>
 
-<div class="reveal">
-	<div class="slides" style="width:100%;">
+<div class="reveal" style="width:100vw;height:100vh">
+	<div class="slides" style="width:100vw;height:100vh">
 		<Presentation {announcements} {duration} {carouselSetting} />
 	</div>
 </div>

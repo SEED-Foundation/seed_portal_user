@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { announcementState } from '../../stores/announcement';
 	import AnnouncementCarousel from '$lib/components/AnnouncementCarousel.svelte';
 	import Loading from '$lib/components/Loading.svelte';
 	import Error from '$lib/components/Error.svelte';
 	import { CarouselSetting } from '$lib/model/carousel_setting';
+	import { announcementTVState } from '../../stores/announcement_tv';
+	import Slides from '$lib/decks/slides.svelte';
 
 	let carouselSetting = new CarouselSetting({
 		duration: 10,
@@ -15,23 +16,23 @@
 	});
 
 	onMount(() => {
-		announcementState.get();
+		announcementTVState.get();
 	});
 </script>
 
 <main>
-	{#if $announcementState.loading}
+	{#if $announcementTVState.loading}
 		<Loading />
-	{:else if $announcementState.error}
-		<div>{$announcementState.error.message}</div>
+	{:else if $announcementTVState.error}
+		<div>{$announcementTVState.error.message}</div>
 		<Error />
-	{:else if $announcementState.announcements && $announcementState.duration}
-		<AnnouncementCarousel
-			{carouselSetting}
-			announcements={$announcementState.announcements}
-			duration={$announcementState.duration}
-		></AnnouncementCarousel>
+	{:else if $announcementTVState.announcementsTV}
+		<Slides announcements={$announcementTVState.announcementsTV} {carouselSetting} duration={20}
+		></Slides>
 	{:else}
 		<div>Nothing to show</div>
 	{/if}
 </main>
+<div class="absolute top-10 left-10">
+	<img src="/images/seed_logo_white.png" class="p-0 w-[10%]" />
+</div>

@@ -37,7 +37,7 @@ const createState = (): AnnouncementStore => {
 	const { subscribe, set } = writable<AnnouncementState>(initState);
 
 	const getAnnouncements = async () => {
-		const prevAnnouncements = get(announcementState);
+		const prevAnnouncements = get(announcementTVState);
 		set({ ...prevAnnouncements, loading: true });
 		let announcementsDoc;
 		try {
@@ -51,7 +51,9 @@ const createState = (): AnnouncementStore => {
 					Query.orderDesc('$createdAt')
 				]
 			);
+			console.log(announcementsDoc);
 		} catch (e: any) {
+			console.log(e);
 			set({
 				...prevAnnouncements,
 				loading: false,
@@ -107,5 +109,5 @@ const createState = (): AnnouncementStore => {
 	};
 };
 
-const announcementState = createState();
-export { announcementState };
+const announcementTVState = createState();
+export { announcementTVState };

@@ -13,7 +13,7 @@ import { AnnouncementModel } from '../lib/model/announcement-model';
 
 interface AnnouncementState {
 	announcements?: AnnouncementModel[];
-	
+
 	duration?: number;
 	error?: {
 		message: string;
@@ -40,18 +40,11 @@ const createState = (): AnnouncementStore => {
 		const prevAnnouncements = get(announcementState);
 		set({ ...prevAnnouncements, loading: true });
 		let announcementsDoc;
-		let durationModel;
 		try {
 			announcementsDoc = await appwriteDatabase.listDocuments(
 				appwriteDatabaseID,
 				appwriteCollectionAnnouncements,
-				[
-					Query.equal('active', true),
-					Query.equal('approve', true),
-					Query.equal('isTV', true),
-					Query.orderDesc('$createdAt')
-
-				]
+				[Query.equal('active', true), Query.equal('approve', true), Query.orderDesc('$createdAt')]
 			);
 		} catch (e: any) {
 			set({

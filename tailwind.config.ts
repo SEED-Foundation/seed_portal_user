@@ -12,6 +12,9 @@ export default {
 	],
 	theme: {
 		extend: {
+			aspectRatio: {
+				'4/3': '4 / 3'
+			},
 			width: {
 				'4/6': '66.666667%',
 				'2/6': '33.333333%',
@@ -36,9 +39,9 @@ export default {
 			}
 		},
 		colors: {
-			primary: "#61b164",
-			black: "#000000",
-			transparent: "transparent",
+			primary: '#61b164',
+			black: '#000000',
+			transparent: 'transparent'
 		}
 	},
 	plugins: [

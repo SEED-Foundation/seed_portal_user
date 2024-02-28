@@ -22,12 +22,16 @@
 	<Slide animate={true} restart={true}>
 		<div class="flex flex-row justify-center items-center h-full">
 			<div class="w-1/2 pl-10 pr-10" data-id="box-1">
-				<div class="aspect-video">
-					<img src={slide.image_url} class="w-full h-full object-cover" alt="slide image" />
+				<div class="p-0 aspect-4/3">
+					<img
+						src={slide.image_url}
+						class="w-full h-full object-cove max-w-full max-h-full"
+						alt="slide image"
+					/>
 				</div>
 			</div>
-			<div class="w-1/2 pr-10 box-1" data-id="box-2">
-				<div class="aspect-video text-justify">
+			<div class="w-1/2 pr-20 box-1" data-id="box-2">
+				<div class=" text-justify pb-40">
 					<div class="r-fit-text fragment" data-autoslide="1000">{slide.title}</div>
 					<div class="r-fit-text fragment" data-autoslide="7000">
 						{@html slide.description_html}
@@ -51,5 +55,10 @@
 		width: 100% !important;
 		height: 100% !important;
 		object-fit: cover;
+	}
+	.title-con {
+		font-size: 30vw;
+		height: 50%;
+		line-height: 0.7;
 	}
 </style>
