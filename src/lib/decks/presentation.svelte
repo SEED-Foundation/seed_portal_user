@@ -30,7 +30,7 @@
 					/>
 				</div>
 			</div>
-			<div class="w-1/2 pr-20 box-1" data-id="box-2">
+			<div class="w-1/2 pr-44 box-1" data-id="box-2">
 				<div class=" text-justify pb-40">
 					<div class="r-fit-text fragment" data-autoslide="1000">{slide.title}</div>
 					<div class="r-fit-text fragment" data-autoslide="7000">

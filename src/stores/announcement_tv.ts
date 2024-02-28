@@ -77,7 +77,9 @@ const createState = (): AnnouncementStore => {
 		const duration = 5;
 		const announcementsTV = announcementsDoc!.documents.map((doc: Models.Document) => {
 			if (doc.image_id) {
+				console.log(doc.image_id);
 				const image = appwriteStorage.getFilePreview(appwriteBucketIdAnnouncement, doc.image_id);
+				console.log(image);
 				doc.image_url = image.href;
 			}
 			return new AnnouncementModel(doc);
