@@ -14,8 +14,6 @@
 			const user = await appwriteAccount.get();
 			console.log('user', user);
 			if (user) {
-				// navigate to the intended page
-
 				// if there is route error
 				if ($page.error) {
 					goto('/main');
